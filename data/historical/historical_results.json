@@ -1,0 +1,1833 @@
+{
+  "baselines": {
+    "B1": "type-and-time clock: per-word alive-rate counting table per trained horizon with shrinkage, log-time interpolation to 64 s",
+    "B2": "lexical ridge: statement bag-of-words + recency/presence + log gap",
+    "B3": "B2 + low-dimensional embeddings of the statement and last-seen context (a tested feature baseline, NOT a proven ceiling on linear or lightweight methods)",
+    "B4": "gradient-boosted trees on B3 features (nonlinearity control; internal held-out study only -- no B4 contrast was run on the confirmation takes)"
+  },
+  "calibration": {
+    "fit_on": "a deterministic train-side subset of the fit groups",
+    "honesty_note": "the models are ultimately fitted on all fit rows, so the calibration rows lie INSIDE the trained-model fit population. This is train-side calibration, not independent held-out calibration. No confirmation labels enter it.",
+    "method": "pool-adjacent-violators isotonic regression",
+    "rows": 11050
+  },
+  "dataset": {
+    "combined": {
+      "candidate_pairs": 64564,
+      "takes": 95,
+      "usable_rows": 62162
+    },
+    "confirmation_universe": {
+      "anchors": 297,
+      "candidate_pairs": 14244,
+      "caption_return_free_rows": 6575,
+      "masked_rows": 588,
+      "oracle_rows": 7081,
+      "takes": 31,
+      "usable_rows": 13656,
+      "volatile_rows": 5687
+    },
+    "corpus_funnel": {
+      "captioned_takes": 207,
+      "downloaded_takes": 883,
+      "labeled_takes": 95
+    },
+    "horizons_sec": [
+      8,
+      32,
+      64,
+      120
+    ],
+    "interpolation_horizon_sec": 64,
+    "note": "Endpoint-validity labels. Pair counts include masked (CANNOT_TELL) rows; usable-row counts do not. Never sum the two.",
+    "original_universe": {
+      "anchors": 1050,
+      "candidate_pairs": 50320,
+      "caption_return_free_alive": 22783,
+      "fit_takes": 33,
+      "internal_heldout_rows": 21711,
+      "internal_heldout_takes": 31,
+      "masked_rows": 1814,
+      "optimization_examples": 20119,
+      "optimization_note": "from the 33 fit takes at 8/32/120 s only",
+      "oracle_alive": 19881,
+      "oracle_dead": 5842,
+      "takes": 64,
+      "usable_rows": 48506
+    },
+    "trained_horizons_sec": [
+      8,
+      32,
+      120
+    ],
+    "volatile_definition": "frozen median of the type-level 120 s counting rate; declared before training",
+    "volatile_threshold": 0.5419
+  },
+  "disagreement_audit": {
+    "adjudicator": "AI research assistant (Claude), blind conditions; not human ground truth",
+    "control": {
+      "adjudicable": 20,
+      "cannot_tell": 0,
+      "dead_rate_of_adjudicable": 0.0,
+      "frame_false": 0,
+      "frame_true": 20,
+      "n": 20
+    },
+    "design": "the 40 internal held-out oracle-alive rows where the original forecaster was most confident of invalidity, plus 20 agreement controls, hash-shuffled; adjudicated from frames without labels, predictions or roles visible",
+    "disputed": {
+      "adjudicable": 35,
+      "cannot_tell": 5,
+      "dead_rate_of_adjudicable": 0.6571428571428571,
+      "frame_false": 23,
+      "frame_true": 12,
+      "n": 40
+    },
+    "reading": "most confident disagreements are invalid on the frame, so instrument false-alive noise concentrates where the model disagrees; the sample is adversarially selected and does NOT revise the global error rate"
+  },
+  "evidence_files": {
+    "corpus_freeze": {
+      "sha256": "d520d6f3a509844e4d268b70ac74fd9eb81d9dc2320b8ffaf3ef3e70ad9244e9",
+      "record_id": "corpus_freeze",
+      "availability": "Private original evidence; SHA-256 identifies the preserved source bytes."
+    },
+    "corpus_labeling": {
+      "sha256": "efc9054eda4747a2a85b37066c55f68827bfd27776d917ca3ac143bb4116f3ee",
+      "record_id": "corpus_labeling",
+      "availability": "Private original evidence; SHA-256 identifies the preserved source bytes."
+    },
+    "disagreement_audit": {
+      "sha256": "8115f3b8aab60686122f7f5856c4b0b5846577a501967581ae8099c470b0e498",
+      "record_id": "disagreement_audit",
+      "availability": "Private original evidence; SHA-256 identifies the preserved source bytes."
+    },
+    "instrument_v4": {
+      "sha256": "2e4aa85c8964ee46bac603d58b360fc727f8b7c2de1684d0459ce39564a56be6",
+      "record_id": "instrument_v4",
+      "availability": "Private original evidence; SHA-256 identifies the preserved source bytes."
+    },
+    "original_confirmation": {
+      "sha256": "02f395b6d689a589ae905064a5356074780ec2df2d59401b731d494036ba7e2b",
+      "record_id": "original_confirmation",
+      "availability": "Private original evidence; SHA-256 identifies the preserved source bytes."
+    },
+    "post_hoc_cache": {
+      "sha256": "1822d13217c514d9f4e4139e448ff8c027c12c7e1b4fa2d9a9156597e18423c8",
+      "record_id": "post_hoc_cache",
+      "availability": "Private original evidence; SHA-256 identifies the preserved source bytes."
+    },
+    "post_hoc_discrimination": {
+      "sha256": "4da6e9efaa3ba65d15d90f410f470a33c451774e27773831bcabef097bfaca0d",
+      "record_id": "post_hoc_discrimination",
+      "availability": "Private original evidence; SHA-256 identifies the preserved source bytes."
+    },
+    "repaired_calibration_map": {
+      "sha256": "024a4225d12dac1e1932f73e8c2381c28337f4ad1f355b8def9c0dee9db44c2e",
+      "record_id": "repaired_calibration_map",
+      "availability": "Private original evidence; SHA-256 identifies the preserved source bytes."
+    },
+    "repaired_primary": {
+      "sha256": "eba021a63415200b34d5d6f46842ceadb4318de3bd265ea3379dc3af923ff997",
+      "record_id": "repaired_primary",
+      "availability": "Private original evidence; SHA-256 identifies the preserved source bytes."
+    }
+  },
+  "generated_from_commit_state": "2026-09-21",
+  "instrument": {
+    "error_model": {
+      "false_alive_on_reference_dead": {
+        "ci95": [
+          0.104167,
+          0.326087
+        ],
+        "n": 48,
+        "value": 0.208333
+      },
+      "false_dead_on_reference_alive": {
+        "n": 47,
+        "value": 0.042553
+      },
+      "interpretation_warning": "these are class-conditional rates against the reference set: P(instrument says alive | reference dead). They are NOT P(reference dead | instrument says alive), and they do not make individual training labels corrected truths. The aggregate-share correction is applied only to reported label proportions; training and Brier evaluation use hard instrument labels."
+    },
+    "gates": {
+      "G1'_cross_filtered_yes": {
+        "max": 0.1,
+        "n": 300,
+        "pass": true,
+        "value": 0.05333333333333334
+      },
+      "G2_last_seen_yes": {
+        "min": 0.8,
+        "pass": true,
+        "source": "v1",
+        "value": 0.82
+      },
+      "G3_manual_agreement": {
+        "min": 0.8,
+        "pass": true,
+        "source": "v1",
+        "value": 0.8823529411764706
+      },
+      "Gd_denial_on_known_dead": {
+        "min_raw": 0.8,
+        "min_with_correction": 0.6,
+        "n_adjudicable": 48,
+        "n_dead": 50,
+        "pass": true,
+        "raw": false,
+        "source": "v3",
+        "value": 0.7916666666666666
+      },
+      "Gp'_known_absent_yes": {
+        "max": 0.1,
+        "n": 43,
+        "pass": true,
+        "value": 0.09302325581395349
+      }
+    },
+    "retired_gate": {
+      "negation_consistency": {
+        "value": 0.464029,
+        "why_retired": "the model reads the embedded proposition, so the control tests syntax, not validity; kept as a documented limitation, not a gate"
+      }
+    },
+    "status": "ESTABLISHED_WITH_CORRECTION"
+  },
+  "internal_heldout": {
+    "all_facts": {
+      "120.0": {
+        "brier": {
+          "B0": 0.123413,
+          "B1": 0.105786,
+          "B2": 0.086001,
+          "B3": 0.085213,
+          "B4": 0.100627,
+          "LoRA": 0.072452,
+          "LoRA_raw": 0.071068,
+          "old_LoRA": 0.072075,
+          "old_LoRA_raw": 0.071265
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.020922,
+            0.045944
+          ],
+          "positive_takes": 28,
+          "takes": 31,
+          "value": 0.033334
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.006695,
+            0.019077
+          ],
+          "positive_takes": 24,
+          "takes": 31,
+          "value": 0.012761
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.001775,
+            0.001029
+          ],
+          "value": -0.000376
+        },
+        "rows": 5377
+      },
+      "32.0": {
+        "brier": {
+          "B0": 0.105456,
+          "B1": 0.092419,
+          "B2": 0.076959,
+          "B3": 0.076641,
+          "B4": 0.09168,
+          "LoRA": 0.069433,
+          "LoRA_raw": 0.068255,
+          "old_LoRA": 0.068511,
+          "old_LoRA_raw": 0.06729
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.014158,
+            0.033454
+          ],
+          "positive_takes": 28,
+          "takes": 31,
+          "value": 0.022985
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.003059,
+            0.011848
+          ],
+          "positive_takes": 23,
+          "takes": 31,
+          "value": 0.007208
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.002689,
+            0.000787
+          ],
+          "value": -0.000923
+        },
+        "rows": 5431
+      },
+      "64.0": {
+        "brier": {
+          "B0": 0.111498,
+          "B1": 0.097308,
+          "B2": 0.079903,
+          "B3": 0.079211,
+          "B4": 0.094958,
+          "LoRA": 0.070203,
+          "LoRA_raw": 0.068904,
+          "old_LoRA": 0.070071,
+          "old_LoRA_raw": 0.069012
+        },
+        "is_confirmatory_gate": false,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.018017,
+            0.036881
+          ],
+          "positive_takes": 28,
+          "takes": 31,
+          "value": 0.027105
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.003907,
+            0.014347
+          ],
+          "positive_takes": 23,
+          "takes": 31,
+          "value": 0.009008
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.001534,
+            0.001322
+          ],
+          "value": -0.000132
+        },
+        "rows": 5417
+      },
+      "8.0": {
+        "brier": {
+          "B0": 0.081763,
+          "B1": 0.074227,
+          "B2": 0.067919,
+          "B3": 0.067395,
+          "B4": 0.07707,
+          "LoRA": 0.062141,
+          "LoRA_raw": 0.061381,
+          "old_LoRA": 0.062519,
+          "old_LoRA_raw": 0.061369
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.008216,
+            0.01605
+          ],
+          "positive_takes": 25,
+          "takes": 31,
+          "value": 0.012085
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.001742,
+            0.009353
+          ],
+          "positive_takes": 24,
+          "takes": 31,
+          "value": 0.005254
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.001047,
+            0.002064
+          ],
+          "value": 0.000378
+        },
+        "rows": 5486
+      }
+    },
+    "population": "volatile stratum, 31 internal held-out takes of the original 64-take universe",
+    "primary_pass": true,
+    "rows_evaluated": 21711,
+    "volatile": {
+      "120.0": {
+        "brier": {
+          "B0": 0.212626,
+          "B1": 0.178906,
+          "B2": 0.139902,
+          "B3": 0.139418,
+          "B4": 0.169778,
+          "LoRA": 0.116634,
+          "LoRA_raw": 0.115606,
+          "old_LoRA": 0.116475,
+          "old_LoRA_raw": 0.115942
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.037166,
+            0.091241
+          ],
+          "positive_takes": 28,
+          "takes": 31,
+          "value": 0.062272
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.012782,
+            0.034418
+          ],
+          "positive_takes": 26,
+          "takes": 31,
+          "value": 0.022784
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.002926,
+            0.002396
+          ],
+          "value": -0.000159
+        },
+        "rows": 2292
+      },
+      "32.0": {
+        "brier": {
+          "B0": 0.182984,
+          "B1": 0.160434,
+          "B2": 0.135535,
+          "B3": 0.13468,
+          "B4": 0.162868,
+          "LoRA": 0.123765,
+          "LoRA_raw": 0.120955,
+          "old_LoRA": 0.121826,
+          "old_LoRA_raw": 0.119313
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.021105,
+            0.053621
+          ],
+          "positive_takes": 25,
+          "takes": 31,
+          "value": 0.036669
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.004519,
+            0.01725
+          ],
+          "positive_takes": 24,
+          "takes": 31,
+          "value": 0.010915
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.005285,
+            0.001282
+          ],
+          "value": -0.001939
+        },
+        "rows": 2349
+      },
+      "64.0": {
+        "brier": {
+          "B0": 0.197356,
+          "B1": 0.170062,
+          "B2": 0.133795,
+          "B3": 0.132849,
+          "B4": 0.169602,
+          "LoRA": 0.12127,
+          "LoRA_raw": 0.119304,
+          "old_LoRA": 0.121482,
+          "old_LoRA_raw": 0.119364
+        },
+        "is_confirmatory_gate": false,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.032109,
+            0.065779
+          ],
+          "positive_takes": 27,
+          "takes": 31,
+          "value": 0.048791
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.003495,
+            0.019137
+          ],
+          "positive_takes": 26,
+          "takes": 31,
+          "value": 0.011578
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.002597,
+            0.002942
+          ],
+          "value": 0.000211
+        },
+        "rows": 2332
+      },
+      "8.0": {
+        "brier": {
+          "B0": 0.149202,
+          "B1": 0.135582,
+          "B2": 0.125197,
+          "B3": 0.124744,
+          "B4": 0.144976,
+          "LoRA": 0.114656,
+          "LoRA_raw": 0.113621,
+          "old_LoRA": 0.115272,
+          "old_LoRA_raw": 0.113097
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.011356,
+            0.029778
+          ],
+          "positive_takes": 26,
+          "takes": 31,
+          "value": 0.020926
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.003569,
+            0.017511
+          ],
+          "positive_takes": 22,
+          "takes": 31,
+          "value": 0.010087
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.00205,
+            0.003607
+          ],
+          "value": 0.000616
+        },
+        "rows": 2387
+      }
+    }
+  },
+  "labeling_controls": {
+    "confirmation_run": {
+      "answered": 7969,
+      "blind_drift_adjudicable": 27,
+      "blind_drift_agreement": 0.851852,
+      "cross_take_still_true": 0.065,
+      "prebirth_still_true_raw_birth_lag": 0.38,
+      "quarantined": false,
+      "queries": 7969
+    },
+    "gate_note": "pre-birth rate is reported as observer birth-lag, never used as a pass/fail gate",
+    "original_run": {
+      "cross_take_n": 300,
+      "cross_take_still_true": 0.053333,
+      "missing_answers": 0,
+      "prebirth_n": 150,
+      "prebirth_still_true_raw_birth_lag": 0.26
+    }
+  },
+  "metric": {
+    "direction": "lower is better",
+    "name": "take-macro Brier score",
+    "target": "instrument-relative endpoint validity at t+delta",
+    "uncertainty": "capture-group bootstrap, 10,000 resamples, seed 20260915; groups = capture/participant"
+  },
+  "observer_confound": {
+    "birth_lag_prebirth_still_true": 0.26,
+    "caption_absent_after_0_5s": 0.462,
+    "flicker_semantics": "On the 2 Hz channel 46.2% of statements are absent 0.5 s later, and 51.1% of those return within 3 s; at least 23.6% of all statement instances provably flicker. Do NOT paraphrase 46.2% as a reappearance rate.",
+    "note": "measured in this fixed-camera corpus; not a universal VLM omission rate",
+    "provable_flicker_share_of_instances": 0.236,
+    "return_within_3s_given_absent": 0.511
+  },
+  "post_hoc": {
+    "cache_note": "offline retention policy measurement on the volatile inventory; NOT a deployed-system utility result. The earlier wasted-slot framing is retired: it measured precision on the easy class.",
+    "discrimination_auc_volatile": {
+      "120.0": {
+        "B1": 0.768073,
+        "B3": 0.820384,
+        "B4": 0.781754,
+        "LoRA": 0.87948
+      },
+      "32.0": {
+        "B1": 0.757206,
+        "B3": 0.820006,
+        "B4": 0.771411,
+        "LoRA": 0.864233
+      },
+      "64.0": {
+        "B1": 0.750977,
+        "B3": 0.822756,
+        "B4": 0.790665,
+        "LoRA": 0.868222
+      },
+      "8.0": {
+        "B1": 0.744184,
+        "B3": 0.805154,
+        "B4": 0.727617,
+        "LoRA": 0.848974
+      }
+    },
+    "murphy_volatile": {
+      "120.0": {
+        "B1": {
+          "reliability": 0.022058,
+          "resolution": 0.036452,
+          "uncertainty": 0.202411
+        },
+        "B3": {
+          "reliability": 0.0027,
+          "resolution": 0.060147,
+          "uncertainty": 0.202411
+        },
+        "LoRA": {
+          "reliability": 0.002371,
+          "resolution": 0.082227,
+          "uncertainty": 0.202411
+        }
+      },
+      "32.0": {
+        "B1": {
+          "reliability": 0.014887,
+          "resolution": 0.025264,
+          "uncertainty": 0.179997
+        },
+        "B3": {
+          "reliability": 0.001477,
+          "resolution": 0.047335,
+          "uncertainty": 0.179997
+        },
+        "LoRA": {
+          "reliability": 0.002333,
+          "resolution": 0.062091,
+          "uncertainty": 0.179997
+        }
+      },
+      "64.0": {
+        "B1": {
+          "reliability": 0.01248,
+          "resolution": 0.024018,
+          "uncertainty": 0.185338
+        },
+        "B3": {
+          "reliability": 0.001431,
+          "resolution": 0.05171,
+          "uncertainty": 0.185338
+        },
+        "LoRA": {
+          "reliability": 0.002364,
+          "resolution": 0.066088,
+          "uncertainty": 0.185338
+        }
+      },
+      "8.0": {
+        "B1": {
+          "reliability": 0.006739,
+          "resolution": 0.012239,
+          "uncertainty": 0.143358
+        },
+        "B3": {
+          "reliability": 0.005733,
+          "resolution": 0.029224,
+          "uncertainty": 0.143358
+        },
+        "LoRA": {
+          "reliability": 0.001928,
+          "resolution": 0.036576,
+          "uncertainty": 0.143358
+        }
+      }
+    },
+    "note": "computed on the ORIGINAL implementation (2026-09-15/16) internal held-out set; not recomputed under the repair",
+    "volatile_cache_coverage": {
+      "k=1": {
+        "120.0": {
+          "B1": 0.313177,
+          "B3": 0.320341,
+          "LoRA": 0.330307,
+          "binding_anchors": 431,
+          "caption_order": 0.187656,
+          "gain_vs_B1": 0.017129,
+          "gain_vs_B1_ci95": [
+            -0.001302,
+            0.035509
+          ]
+        },
+        "32.0": {
+          "B1": 0.289842,
+          "B3": 0.299541,
+          "LoRA": 0.301106,
+          "binding_anchors": 442,
+          "caption_order": 0.187217,
+          "gain_vs_B1": 0.011263,
+          "gain_vs_B1_ci95": [
+            -0.003451,
+            0.024399
+          ]
+        },
+        "64.0": {
+          "B1": 0.292335,
+          "B3": 0.298515,
+          "LoRA": 0.310247,
+          "binding_anchors": 433,
+          "caption_order": 0.179946,
+          "gain_vs_B1": 0.017912,
+          "gain_vs_B1_ci95": [
+            -0.003489,
+            0.038129
+          ]
+        },
+        "8.0": {
+          "B1": 0.260335,
+          "B3": 0.261043,
+          "LoRA": 0.259033,
+          "binding_anchors": 439,
+          "caption_order": 0.205548,
+          "gain_vs_B1": -0.001302,
+          "gain_vs_B1_ci95": [
+            -0.015117,
+            0.0103
+          ]
+        }
+      },
+      "k=3": {
+        "120.0": {
+          "B1": 0.659338,
+          "B3": 0.665751,
+          "LoRA": 0.686785,
+          "binding_anchors": 329,
+          "caption_order": 0.546912,
+          "gain_vs_B1": 0.027447,
+          "gain_vs_B1_ci95": [
+            0.010172,
+            0.050449
+          ]
+        },
+        "32.0": {
+          "B1": 0.624889,
+          "B3": 0.639333,
+          "LoRA": 0.652078,
+          "binding_anchors": 341,
+          "caption_order": 0.536881,
+          "gain_vs_B1": 0.027189,
+          "gain_vs_B1_ci95": [
+            0.004029,
+            0.056287
+          ]
+        },
+        "64.0": {
+          "B1": 0.641266,
+          "B3": 0.661077,
+          "LoRA": 0.671773,
+          "binding_anchors": 343,
+          "caption_order": 0.545206,
+          "gain_vs_B1": 0.030506,
+          "gain_vs_B1_ci95": [
+            0.013568,
+            0.049243
+          ]
+        },
+        "8.0": {
+          "B1": 0.593215,
+          "B3": 0.600164,
+          "LoRA": 0.614742,
+          "binding_anchors": 350,
+          "caption_order": 0.55671,
+          "gain_vs_B1": 0.021527,
+          "gain_vs_B1_ci95": [
+            0.009641,
+            0.035481
+          ]
+        }
+      },
+      "k=5": {
+        "120.0": {
+          "B1": 0.840729,
+          "B3": 0.850762,
+          "LoRA": 0.873285,
+          "binding_anchors": 177,
+          "caption_order": 0.739999,
+          "gain_vs_B1": 0.032557,
+          "gain_vs_B1_ci95": [
+            0.01506,
+            0.052166
+          ]
+        },
+        "32.0": {
+          "B1": 0.792794,
+          "B3": 0.799314,
+          "LoRA": 0.818118,
+          "binding_anchors": 186,
+          "caption_order": 0.72937,
+          "gain_vs_B1": 0.025324,
+          "gain_vs_B1_ci95": [
+            0.011505,
+            0.040229
+          ]
+        },
+        "64.0": {
+          "B1": 0.808293,
+          "B3": 0.818975,
+          "LoRA": 0.836178,
+          "binding_anchors": 184,
+          "caption_order": 0.758929,
+          "gain_vs_B1": 0.027885,
+          "gain_vs_B1_ci95": [
+            0.015523,
+            0.040703
+          ]
+        },
+        "8.0": {
+          "B1": 0.776016,
+          "B3": 0.781924,
+          "LoRA": 0.802671,
+          "binding_anchors": 190,
+          "caption_order": 0.744799,
+          "gain_vs_B1": 0.026655,
+          "gain_vs_B1_ci95": [
+            0.010546,
+            0.045708
+          ]
+        }
+      }
+    }
+  },
+  "primary_confirmation": {
+    "all_facts": {
+      "120.0": {
+        "brier": {
+          "B1": 0.096969,
+          "B3": 0.078907,
+          "LoRA": 0.069229,
+          "LoRA_raw": 0.068067,
+          "old_LoRA": 0.068767,
+          "old_LoRA_raw": 0.068574
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.018032,
+            0.040007
+          ],
+          "positive_takes": 28,
+          "takes": 31,
+          "value": 0.027741
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.003575,
+            0.01783
+          ],
+          "positive_takes": 23,
+          "takes": 31,
+          "value": 0.009678
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.003155,
+            0.002714
+          ],
+          "value": -0.000462
+        },
+        "rows": 3372
+      },
+      "32.0": {
+        "brier": {
+          "B1": 0.08493,
+          "B3": 0.066838,
+          "LoRA": 0.057189,
+          "LoRA_raw": 0.057485,
+          "old_LoRA": 0.057508,
+          "old_LoRA_raw": 0.058148
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.017026,
+            0.041546
+          ],
+          "positive_takes": 26,
+          "takes": 31,
+          "value": 0.027741
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.005168,
+            0.014856
+          ],
+          "positive_takes": 25,
+          "takes": 31,
+          "value": 0.009649
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.001511,
+            0.00276
+          ],
+          "value": 0.000319
+        },
+        "rows": 3414
+      },
+      "64.0": {
+        "brier": {
+          "B1": 0.090757,
+          "B3": 0.07433,
+          "LoRA": 0.064062,
+          "LoRA_raw": 0.0625,
+          "old_LoRA": 0.063637,
+          "old_LoRA_raw": 0.063272
+        },
+        "is_confirmatory_gate": false,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.017278,
+            0.039248
+          ],
+          "positive_takes": 27,
+          "takes": 31,
+          "value": 0.026695
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.005681,
+            0.015787
+          ],
+          "positive_takes": 23,
+          "takes": 31,
+          "value": 0.010269
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.002518,
+            0.001778
+          ],
+          "value": -0.000425
+        },
+        "rows": 3411
+      },
+      "8.0": {
+        "brier": {
+          "B1": 0.066968,
+          "B3": 0.057044,
+          "LoRA": 0.0508,
+          "LoRA_raw": 0.050456,
+          "old_LoRA": 0.049858,
+          "old_LoRA_raw": 0.050422
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.008758,
+            0.024367
+          ],
+          "positive_takes": 26,
+          "takes": 31,
+          "value": 0.016168
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.001314,
+            0.011615
+          ],
+          "positive_takes": 20,
+          "takes": 31,
+          "value": 0.006244
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.002839,
+            0.000709
+          ],
+          "value": -0.000942
+        },
+        "rows": 3459
+      }
+    },
+    "ece_all_facts": {
+      "120.0": {
+        "B1": 0.073547,
+        "B3": 0.010666,
+        "LoRA": 0.019311,
+        "LoRA_raw": 0.0149,
+        "old_LoRA": 0.017849
+      },
+      "32.0": {
+        "B1": 0.069886,
+        "B3": 0.013726,
+        "LoRA": 0.013821,
+        "LoRA_raw": 0.015457,
+        "old_LoRA": 0.012193
+      },
+      "64.0": {
+        "B1": 0.067662,
+        "B3": 0.021609,
+        "LoRA": 0.02222,
+        "LoRA_raw": 0.022194,
+        "old_LoRA": 0.022767
+      },
+      "8.0": {
+        "B1": 0.047584,
+        "B3": 0.014977,
+        "LoRA": 0.017789,
+        "LoRA_raw": 0.008603,
+        "old_LoRA": 0.012533
+      }
+    },
+    "ece_note": "all-facts calibration against instrument labels; do not mix this denominator with the volatile Brier table, and do not read it as calibration to physical truth",
+    "endpoints": {
+      "C1": true,
+      "C1_pass_horizons": [
+        8.0,
+        32.0,
+        120.0
+      ],
+      "C2": true,
+      "C2_pass_horizons": [
+        8.0,
+        32.0,
+        120.0
+      ],
+      "C3": true
+    },
+    "oracle_dead_C3": {
+      "brier": {
+        "B1": 0.648726,
+        "B3": 0.496305,
+        "LoRA": 0.420865,
+        "LoRA_raw": 0.434234,
+        "old_LoRA": 0.423284,
+        "old_LoRA_raw": 0.433839
+      },
+      "n": 1211,
+      "reduction_vs_B3": {
+        "ci95": [
+          0.034085,
+          0.115052
+        ],
+        "positive_takes": 23,
+        "takes": 30,
+        "value": 0.075441
+      }
+    },
+    "population": "volatile stratum, 31 additional takes, zero refitting",
+    "reliability_bins": {
+      "horizons": {
+        "120.0": {
+          "B1": {
+            "bins": [
+              {
+                "hi": 0.1,
+                "lo": 0.0,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.2,
+                "lo": 0.1,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.3,
+                "lo": 0.2,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.4,
+                "lo": 0.3,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.5,
+                "lo": 0.4,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.6,
+                "lo": 0.5,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.7,
+                "lo": 0.6,
+                "mean_predicted": 0.679956,
+                "n": 111,
+                "observed_valid": 0.63964
+              },
+              {
+                "hi": 0.8,
+                "lo": 0.7,
+                "mean_predicted": 0.751241,
+                "n": 557,
+                "observed_valid": 0.667864
+              },
+              {
+                "hi": 0.9,
+                "lo": 0.8,
+                "mean_predicted": 0.864805,
+                "n": 2029,
+                "observed_valid": 0.938886
+              },
+              {
+                "hi": 1.0,
+                "lo": 0.9,
+                "mean_predicted": 0.918854,
+                "n": 675,
+                "observed_valid": 0.988148
+              }
+            ],
+            "ece": 0.073547,
+            "n": 3372
+          },
+          "LoRA": {
+            "bins": [
+              {
+                "hi": 0.1,
+                "lo": 0.0,
+                "mean_predicted": 0.058599,
+                "n": 74,
+                "observed_valid": 0.121622
+              },
+              {
+                "hi": 0.2,
+                "lo": 0.1,
+                "mean_predicted": 0.134545,
+                "n": 25,
+                "observed_valid": 0.24
+              },
+              {
+                "hi": 0.3,
+                "lo": 0.2,
+                "mean_predicted": 0.234734,
+                "n": 65,
+                "observed_valid": 0.384615
+              },
+              {
+                "hi": 0.4,
+                "lo": 0.3,
+                "mean_predicted": 0.369565,
+                "n": 17,
+                "observed_valid": 0.529412
+              },
+              {
+                "hi": 0.5,
+                "lo": 0.4,
+                "mean_predicted": 0.469262,
+                "n": 64,
+                "observed_valid": 0.5
+              },
+              {
+                "hi": 0.6,
+                "lo": 0.5,
+                "mean_predicted": 0.546381,
+                "n": 220,
+                "observed_valid": 0.645455
+              },
+              {
+                "hi": 0.7,
+                "lo": 0.6,
+                "mean_predicted": 0.692308,
+                "n": 18,
+                "observed_valid": 0.888889
+              },
+              {
+                "hi": 0.8,
+                "lo": 0.7,
+                "mean_predicted": 0.766801,
+                "n": 131,
+                "observed_valid": 0.78626
+              },
+              {
+                "hi": 0.9,
+                "lo": 0.8,
+                "mean_predicted": 0.87456,
+                "n": 272,
+                "observed_valid": 0.900735
+              },
+              {
+                "hi": 1.0,
+                "lo": 0.9,
+                "mean_predicted": 0.980042,
+                "n": 2486,
+                "observed_valid": 0.976669
+              }
+            ],
+            "ece": 0.019311,
+            "n": 3372
+          }
+        },
+        "32.0": {
+          "B1": {
+            "bins": [
+              {
+                "hi": 0.1,
+                "lo": 0.0,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.2,
+                "lo": 0.1,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.3,
+                "lo": 0.2,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.4,
+                "lo": 0.3,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.5,
+                "lo": 0.4,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.6,
+                "lo": 0.5,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.7,
+                "lo": 0.6,
+                "mean_predicted": 0.672563,
+                "n": 19,
+                "observed_valid": 0.684211
+              },
+              {
+                "hi": 0.8,
+                "lo": 0.7,
+                "mean_predicted": 0.764576,
+                "n": 441,
+                "observed_valid": 0.646259
+              },
+              {
+                "hi": 0.9,
+                "lo": 0.8,
+                "mean_predicted": 0.867467,
+                "n": 1585,
+                "observed_valid": 0.931861
+              },
+              {
+                "hi": 1.0,
+                "lo": 0.9,
+                "mean_predicted": 0.921017,
+                "n": 1369,
+                "observed_valid": 0.982469
+              }
+            ],
+            "ece": 0.069886,
+            "n": 3414
+          },
+          "LoRA": {
+            "bins": [
+              {
+                "hi": 0.1,
+                "lo": 0.0,
+                "mean_predicted": 0.065848,
+                "n": 32,
+                "observed_valid": 0.15625
+              },
+              {
+                "hi": 0.2,
+                "lo": 0.1,
+                "mean_predicted": 0.134848,
+                "n": 15,
+                "observed_valid": 0.333333
+              },
+              {
+                "hi": 0.3,
+                "lo": 0.2,
+                "mean_predicted": 0.229864,
+                "n": 68,
+                "observed_valid": 0.25
+              },
+              {
+                "hi": 0.4,
+                "lo": 0.3,
+                "mean_predicted": 0.369565,
+                "n": 8,
+                "observed_valid": 0.625
+              },
+              {
+                "hi": 0.5,
+                "lo": 0.4,
+                "mean_predicted": 0.466412,
+                "n": 64,
+                "observed_valid": 0.34375
+              },
+              {
+                "hi": 0.6,
+                "lo": 0.5,
+                "mean_predicted": 0.549348,
+                "n": 173,
+                "observed_valid": 0.65896
+              },
+              {
+                "hi": 0.7,
+                "lo": 0.6,
+                "mean_predicted": 0.692308,
+                "n": 16,
+                "observed_valid": 0.9375
+              },
+              {
+                "hi": 0.8,
+                "lo": 0.7,
+                "mean_predicted": 0.768817,
+                "n": 96,
+                "observed_valid": 0.802083
+              },
+              {
+                "hi": 0.9,
+                "lo": 0.8,
+                "mean_predicted": 0.876011,
+                "n": 266,
+                "observed_valid": 0.87594
+              },
+              {
+                "hi": 1.0,
+                "lo": 0.9,
+                "mean_predicted": 0.983167,
+                "n": 2676,
+                "observed_valid": 0.981689
+              }
+            ],
+            "ece": 0.013821,
+            "n": 3414
+          }
+        },
+        "64.0": {
+          "B1": {
+            "bins": [
+              {
+                "hi": 0.1,
+                "lo": 0.0,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.2,
+                "lo": 0.1,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.3,
+                "lo": 0.2,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.4,
+                "lo": 0.3,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.5,
+                "lo": 0.4,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.6,
+                "lo": 0.5,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.7,
+                "lo": 0.6,
+                "mean_predicted": 0.68065,
+                "n": 50,
+                "observed_valid": 0.68
+              },
+              {
+                "hi": 0.8,
+                "lo": 0.7,
+                "mean_predicted": 0.755896,
+                "n": 550,
+                "observed_valid": 0.687273
+              },
+              {
+                "hi": 0.9,
+                "lo": 0.8,
+                "mean_predicted": 0.86766,
+                "n": 1864,
+                "observed_valid": 0.939378
+              },
+              {
+                "hi": 1.0,
+                "lo": 0.9,
+                "mean_predicted": 0.919391,
+                "n": 947,
+                "observed_valid": 0.982049
+              }
+            ],
+            "ece": 0.067662,
+            "n": 3411
+          },
+          "LoRA": {
+            "bins": [
+              {
+                "hi": 0.1,
+                "lo": 0.0,
+                "mean_predicted": 0.063404,
+                "n": 59,
+                "observed_valid": 0.220339
+              },
+              {
+                "hi": 0.2,
+                "lo": 0.1,
+                "mean_predicted": 0.133333,
+                "n": 15,
+                "observed_valid": 0.266667
+              },
+              {
+                "hi": 0.3,
+                "lo": 0.2,
+                "mean_predicted": 0.228399,
+                "n": 70,
+                "observed_valid": 0.2
+              },
+              {
+                "hi": 0.4,
+                "lo": 0.3,
+                "mean_predicted": 0.369565,
+                "n": 14,
+                "observed_valid": 0.357143
+              },
+              {
+                "hi": 0.5,
+                "lo": 0.4,
+                "mean_predicted": 0.466851,
+                "n": 67,
+                "observed_valid": 0.477612
+              },
+              {
+                "hi": 0.6,
+                "lo": 0.5,
+                "mean_predicted": 0.550396,
+                "n": 215,
+                "observed_valid": 0.739535
+              },
+              {
+                "hi": 0.7,
+                "lo": 0.6,
+                "mean_predicted": 0.692308,
+                "n": 10,
+                "observed_valid": 0.8
+              },
+              {
+                "hi": 0.8,
+                "lo": 0.7,
+                "mean_predicted": 0.766979,
+                "n": 117,
+                "observed_valid": 0.82906
+              },
+              {
+                "hi": 0.9,
+                "lo": 0.8,
+                "mean_predicted": 0.873003,
+                "n": 289,
+                "observed_valid": 0.899654
+              },
+              {
+                "hi": 1.0,
+                "lo": 0.9,
+                "mean_predicted": 0.980799,
+                "n": 2555,
+                "observed_valid": 0.978865
+              }
+            ],
+            "ece": 0.02222,
+            "n": 3411
+          }
+        },
+        "8.0": {
+          "B1": {
+            "bins": [
+              {
+                "hi": 0.1,
+                "lo": 0.0,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.2,
+                "lo": 0.1,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.3,
+                "lo": 0.2,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.4,
+                "lo": 0.3,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.5,
+                "lo": 0.4,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.6,
+                "lo": 0.5,
+                "mean_predicted": null,
+                "n": 0,
+                "observed_valid": null
+              },
+              {
+                "hi": 0.7,
+                "lo": 0.6,
+                "mean_predicted": 0.691187,
+                "n": 2,
+                "observed_valid": 1.0
+              },
+              {
+                "hi": 0.8,
+                "lo": 0.7,
+                "mean_predicted": 0.780328,
+                "n": 84,
+                "observed_valid": 0.714286
+              },
+              {
+                "hi": 0.9,
+                "lo": 0.8,
+                "mean_predicted": 0.859919,
+                "n": 926,
+                "observed_valid": 0.816415
+              },
+              {
+                "hi": 1.0,
+                "lo": 0.9,
+                "mean_predicted": 0.932103,
+                "n": 2447,
+                "observed_valid": 0.980384
+              }
+            ],
+            "ece": 0.047584,
+            "n": 3459
+          },
+          "LoRA": {
+            "bins": [
+              {
+                "hi": 0.1,
+                "lo": 0.0,
+                "mean_predicted": 0.083628,
+                "n": 6,
+                "observed_valid": 0.166667
+              },
+              {
+                "hi": 0.2,
+                "lo": 0.1,
+                "mean_predicted": 0.130682,
+                "n": 2,
+                "observed_valid": 0.0
+              },
+              {
+                "hi": 0.3,
+                "lo": 0.2,
+                "mean_predicted": 0.239382,
+                "n": 26,
+                "observed_valid": 0.115385
+              },
+              {
+                "hi": 0.4,
+                "lo": 0.3,
+                "mean_predicted": 0.369565,
+                "n": 7,
+                "observed_valid": 0.285714
+              },
+              {
+                "hi": 0.5,
+                "lo": 0.4,
+                "mean_predicted": 0.457842,
+                "n": 56,
+                "observed_valid": 0.321429
+              },
+              {
+                "hi": 0.6,
+                "lo": 0.5,
+                "mean_predicted": 0.545079,
+                "n": 161,
+                "observed_valid": 0.614907
+              },
+              {
+                "hi": 0.7,
+                "lo": 0.6,
+                "mean_predicted": 0.692308,
+                "n": 12,
+                "observed_valid": 0.666667
+              },
+              {
+                "hi": 0.8,
+                "lo": 0.7,
+                "mean_predicted": 0.773976,
+                "n": 78,
+                "observed_valid": 0.884615
+              },
+              {
+                "hi": 0.9,
+                "lo": 0.8,
+                "mean_predicted": 0.876663,
+                "n": 205,
+                "observed_valid": 0.84878
+              },
+              {
+                "hi": 1.0,
+                "lo": 0.9,
+                "mean_predicted": 0.986383,
+                "n": 2906,
+                "observed_valid": 0.978321
+              }
+            ],
+            "ece": 0.017789,
+            "n": 3459
+          }
+        }
+      },
+      "method": "10 equal-width bins on [0, 1]; each arm's binned ECE is asserted equal to the released ece_all_facts value before emission",
+      "note": "the per-bin form of ece_all_facts, released so the calibration figure plots measured bins rather than a redrawn summary; not a new measurement",
+      "population": "all facts, 31 confirmation takes, repaired implementation (same denominator as ece_all_facts)"
+    },
+    "rows": 13656,
+    "scope_note": "Fixed-protocol implementation repair robustness check; confirmation was previously used, not a new untouched confirmation.",
+    "takes": 31,
+    "verdict": "CONFIRMED",
+    "volatile": {
+      "120.0": {
+        "brier": {
+          "B1": 0.155912,
+          "B3": 0.126391,
+          "LoRA": 0.111583,
+          "LoRA_raw": 0.108744,
+          "old_LoRA": 0.1101,
+          "old_LoRA_raw": 0.108961
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.028689,
+            0.062331
+          ],
+          "positive_takes": 28,
+          "takes": 31,
+          "value": 0.044329
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.004468,
+            0.026342
+          ],
+          "positive_takes": 24,
+          "takes": 31,
+          "value": 0.014808
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.005915,
+            0.003362
+          ],
+          "value": -0.001482
+        },
+        "rows": 1385
+      },
+      "32.0": {
+        "brier": {
+          "B1": 0.137301,
+          "B3": 0.111699,
+          "LoRA": 0.093314,
+          "LoRA_raw": 0.093655,
+          "old_LoRA": 0.093904,
+          "old_LoRA_raw": 0.094634
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.026885,
+            0.064942
+          ],
+          "positive_takes": 25,
+          "takes": 31,
+          "value": 0.043987
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.009413,
+            0.029873
+          ],
+          "positive_takes": 24,
+          "takes": 31,
+          "value": 0.018384
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.002661,
+            0.004668
+          ],
+          "value": 0.000589
+        },
+        "rows": 1420
+      },
+      "64.0": {
+        "brier": {
+          "B1": 0.146411,
+          "B3": 0.119506,
+          "LoRA": 0.099797,
+          "LoRA_raw": 0.098062,
+          "old_LoRA": 0.099,
+          "old_LoRA_raw": 0.098754
+        },
+        "is_confirmatory_gate": false,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.029227,
+            0.067935
+          ],
+          "positive_takes": 28,
+          "takes": 31,
+          "value": 0.046614
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.009348,
+            0.033396
+          ],
+          "positive_takes": 24,
+          "takes": 31,
+          "value": 0.019709
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.004116,
+            0.00248
+          ],
+          "value": -0.000797
+        },
+        "rows": 1424
+      },
+      "8.0": {
+        "brier": {
+          "B1": 0.113061,
+          "B3": 0.09946,
+          "LoRA": 0.085325,
+          "LoRA_raw": 0.084631,
+          "old_LoRA": 0.084081,
+          "old_LoRA_raw": 0.085016
+        },
+        "is_confirmatory_gate": true,
+        "reduction_vs_B1": {
+          "ci95": [
+            0.014343,
+            0.041936
+          ],
+          "positive_takes": 26,
+          "takes": 31,
+          "value": 0.027737
+        },
+        "reduction_vs_B3": {
+          "ci95": [
+            0.004826,
+            0.024185
+          ],
+          "positive_takes": 20,
+          "takes": 31,
+          "value": 0.014135
+        },
+        "repaired_vs_original_model": {
+          "ci95": [
+            -0.00449,
+            0.00174
+          ],
+          "value": -0.001244
+        },
+        "rows": 1458
+      }
+    }
+  },
+  "release_primary_implementation": {
+    "adapter_sha256": "f053ee7c41d8bb8e28e2da788efb29162cc971398f5535d77732547b5b1a0553",
+    "run": "blackout_causal_inventory_v2_20260920",
+    "training": {
+      "epochs": 1,
+      "examples": 20119,
+      "final_train_loss": 0.05758976113696735,
+      "lora_rank": 16,
+      "lr": 0.0001,
+      "optimizer_steps": 1258,
+      "seed": 20260915,
+      "seeds_run": 1
+    },
+    "why": "source-only causal inventory construction; supersedes the 2026-09-15 builder, which filtered inventory facts by future label adjudicability"
+  },
+  "repair_stability": {
+    "answer": "all eight calibrated repaired-vs-original comparison intervals cross zero in both populations; directions are mixed; this supports stability, it is NOT an equivalence test or a claim of exactly zero effect",
+    "known_exception": "small uncalibrated internal all-facts degradation at 32 s (Brier +0.000951; paired reduction CI [-0.001964, -0.000029])",
+    "prompts_changed": {
+      "anchors": 36,
+      "internal_heldout_rows": 465,
+      "rows": 1449,
+      "share_of_optimization_prompts": 0.0368,
+      "training_examples": 740
+    },
+    "question": "did the inventory-construction repair change the result?"
+  },
+  "schema": "visual_memory_validity_public_results_v1"
+}

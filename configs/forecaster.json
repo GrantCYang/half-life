@@ -1,0 +1,29 @@
+{
+  "model_family": "qwen3_5",
+  "model_path_note": "The recorded base is Qwen/Qwen3.8-27B at revision 1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0; see model_metadata.json and weight_identity.json. Pass its local checkpoint directory with --model.",
+  "dtype": "bfloat16",
+  "attn_implementation": "eager",
+  "max_sequence_length": 1024,
+  "gradient_checkpointing": true,
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "in_proj_qkv", "in_proj_z", "in_proj_a", "in_proj_b", "out_proj", "gate_proj", "up_proj", "down_proj"]
+  },
+  "optimization": {
+    "epochs": 1,
+    "learning_rate": 0.0001,
+    "global_batch_size": 16,
+    "microbatch_size": 1,
+    "weight_decay": 0.0,
+    "scheduler": "cosine",
+    "warmup_steps": 0,
+    "warmup_note": "The archived repaired run had effectively zero warmup; this is explicit here.",
+    "max_grad_norm": 1.0,
+    "seed": 20260915
+  },
+  "trained_horizons_sec": [8, 32, 120],
+  "interpolation_horizon_sec": 64,
+  "scoring_mode": "full"
+}

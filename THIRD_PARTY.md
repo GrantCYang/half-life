@@ -1,0 +1,7 @@
+# Third-party material
+
+Ego-Exo4D: Grauman et al., *Ego-Exo4D: Understanding Skilled Human Activity from First- and Third-Person Perspectives*, CVPR 2024, [paper](https://arxiv.org/abs/2311.18259), [access](https://docs.ego-exo4d-data.org/getting-started/). Its [published model license](https://ego4d-data.org/pdfs/Ego-Exo4D-Model-License.pdf), grant-of-license clause, includes reproduction of images in research publications and associated publication websites. The accepted dataset agreement governs use. The two embedded paper frames remain attributed research illustrations; no standalone frame dataset, video, caption corpus or per-row text is redistributed.
+
+Qwen/Qwen3.8-27B: [pinned revision](https://huggingface.co/Qwen/Qwen3.8-27B/tree/1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0), upstream Apache-2.0. Weights and adapters are not included. The preserved dependency files identify `cross-encoder/nli-deberta-v3-base` and `sentence-transformers/all-MiniLM-L6-v2`; their file hashes are recorded in `configs/label_model_identity.json`. Exact upstream revisions and complete historical run binding remain unresolved. Their weights are not distributed, and recovered file identities are not a claim of full historical regeneration.
+
+The TMLR and bundled LaTeX styles retain their original notices. Python dependencies retain their upstream licenses; no dependency code is vendored. MIT covers original project code, and CC BY 4.0 covers original aggregate tables, without superseding any third-party terms.

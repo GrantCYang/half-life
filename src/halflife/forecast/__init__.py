@@ -1,0 +1,1 @@
+"""HALFLIFE forecast components."""

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "halflife-memory"
+version = "0.2.1"
+description = "Forecasting the endpoint validity of visual memories"
+readme = "README.md"
+authors = [{name = "Yixuan Yang"}]
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+figures = ["matplotlib>=3.8,<4", "Pillow>=10"]
+model = ["torch>=2.5", "transformers>=5.16.1,<6", "accelerate>=1.0", "peft>=0.14", "Pillow>=10", "safetensors>=0.4"]
+baselines = ["scikit-learn>=1.4", "sentence-transformers>=3.0"]
+test = ["pytest>=8.0", "ruff==0.17.0"]
+
+[project.scripts]
+halflife = "halflife.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

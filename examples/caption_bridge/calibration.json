@@ -1,0 +1,12 @@
+{
+  "algorithm": "isotonic_ties_linear_v1",
+  "x": [
+    0,
+    1
+  ],
+  "y": [
+    0,
+    1
+  ],
+  "origin": "synthetic_identity_map_not_fitted"
+}

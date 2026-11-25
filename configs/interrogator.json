@@ -1,0 +1,12 @@
+{
+  "frame_offsets_sec": [-2.0, -1.0, 0.0],
+  "max_new_tokens": 16,
+  "prompt_preamble_by_frame_count": {
+    "3": "You are a visual measurement instrument. You see three frames from the same fixed camera in time order: 2.0 seconds ago, 1.0 second ago, and the current moment. The final frame is the current moment.",
+    "2": "You are a visual measurement instrument. You see two frames from the same fixed camera in time order: 1.0 second ago and the current moment. The final frame is the current moment.",
+    "1": "You are a visual measurement instrument. You see a single frame: the current moment."
+  },
+  "prompt_body": "Statement: \"{statement}\"\n\nThis statement described this scene at an earlier moment. Judge whether it is still true of the scene at the CURRENT moment (the final frame).\nIf the relevant object or region is occluded, out of frame, or too small to verify, answer CANNOT_TELL.\nAnswer with exactly one word: STILL_TRUE, NO_LONGER_TRUE, or CANNOT_TELL.",
+  "caption_entailment_threshold": 0.5,
+  "caption_support_note": "Supply an explicit example_id-keyed caption_entailment_score file to use independently computed NLI support; missing scores never imply DEAD."
+}

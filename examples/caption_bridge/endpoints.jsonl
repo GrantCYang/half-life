@@ -1,0 +1,1 @@
+{"case_id": "synthetic-caption-120s", "take_uid": "synthetic-example", "anchor_sec": 10, "delta_sec": 120, "current_frames": [{"path": "gray.png", "time_sec": 130, "sha256": "5f8564422b1aa2e65999237b5fe9eca4ed4296f22eb28c05246bc21a4a598e13"}], "origin": "synthetic_workflow_fixture"}

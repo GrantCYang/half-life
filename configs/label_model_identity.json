@@ -1,0 +1,102 @@
+{
+  "scope": "Content identities recovered from the preserved dependency directories. Weight hashes were recomputed; an upstream commit was not recorded for these copies.",
+  "models": {
+    "cross-encoder/nli-deberta-v3-base": {
+      "repository": "cross-encoder/nli-deberta-v3-base",
+      "upstream_revision": null,
+      "files": [
+        {
+          "file": "README.md",
+          "bytes": 2856,
+          "sha256": "b6a6dd82d5fee7036e3b815ce1d28458df294d8525fc234fb7e7277b6b79d878"
+        },
+        {
+          "file": "added_tokens.json",
+          "bytes": 26,
+          "sha256": "a4b6bfe668f2b3cf6f0cd535e98a0663d2d0d4a4a15f13075ad3597d33985a23"
+        },
+        {
+          "file": "config.json",
+          "bytes": 1052,
+          "sha256": "897e756eb59d3183adb505952e7910e7cbc7750a43f3b3747a96b688d2b02a47"
+        },
+        {
+          "file": "model.safetensors",
+          "bytes": 737726552,
+          "sha256": "d8148c6d49e0a7925134294c56326c71fe0ab1dc390e37355e00c7efbb488afa"
+        },
+        {
+          "file": "special_tokens_map.json",
+          "bytes": 301,
+          "sha256": "ed7c099c988dbb414b18a6980d20cb57b91b7cd119f6f6941eb364b0e892e712"
+        },
+        {
+          "file": "tokenizer.json",
+          "bytes": 8656624,
+          "sha256": "5124ef2ead1a10a717703bc436de7f353da76d6340e4587719b42b1693707964"
+        },
+        {
+          "file": "tokenizer_config.json",
+          "bytes": 1346,
+          "sha256": "f3eecd07c370ef0bf7dd3780d3cd68cf9c8b00c267e21a208ddcd8f82bfec1a6"
+        }
+      ]
+    },
+    "sentence-transformers/all-MiniLM-L6-v2": {
+      "repository": "sentence-transformers/all-MiniLM-L6-v2",
+      "upstream_revision": null,
+      "files": [
+        {
+          "file": "README.md",
+          "bytes": 10502,
+          "sha256": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0"
+        },
+        {
+          "file": "config.json",
+          "bytes": 612,
+          "sha256": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41"
+        },
+        {
+          "file": "config_sentence_transformers.json",
+          "bytes": 116,
+          "sha256": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3"
+        },
+        {
+          "file": "data_config.json",
+          "bytes": 39265,
+          "sha256": "32edcb108fc2516b920734a862ae0692bcae1c5d45d5f8d972cb0d53434a4c54"
+        },
+        {
+          "file": "model.safetensors",
+          "bytes": 90868376,
+          "sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db"
+        },
+        {
+          "file": "modules.json",
+          "bytes": 349,
+          "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf"
+        },
+        {
+          "file": "sentence_bert_config.json",
+          "bytes": 53,
+          "sha256": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7"
+        },
+        {
+          "file": "special_tokens_map.json",
+          "bytes": 112,
+          "sha256": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3"
+        },
+        {
+          "file": "tokenizer.json",
+          "bytes": 466247,
+          "sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+        },
+        {
+          "file": "tokenizer_config.json",
+          "bytes": 350,
+          "sha256": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b"
+        }
+      ]
+    }
+  }
+}

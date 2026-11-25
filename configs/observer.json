@@ -1,0 +1,11 @@
+{
+  "frame_offsets_sec": [-2.0, -1.0, 0.0],
+  "sampling_step_sec": 0.5,
+  "max_new_tokens": 1024,
+  "prompt_preamble_by_frame_count": {
+    "3": "You are a visual measurement instrument. You see three frames from the same fixed camera in time order: 2.0 seconds ago, 1.0 second ago, and the current moment. The final frame is the current moment.",
+    "2": "You are a visual measurement instrument. You see two frames from the same fixed camera in time order: 1.0 second ago and the current moment. The final frame is the current moment.",
+    "1": "You are a visual measurement instrument. You see a single frame: the current moment. Because only one frame is provided, \"motion\" must be an empty list."
+  },
+  "prompt_body": "Return exactly one JSON object:\n{\"visible\":[\"...\"],\"motion\":[\"...\"],\"inferred\":[\"...\"]}\n\n\"visible\": directly visible physical states in the FINAL (current) frame only: people and hands, handled or nearby manipulable objects, contact, support and containment relations, object position, and visible state such as open/closed, full/empty, attached/detached, or intact/damaged. A state that held in an earlier frame but no longer holds in the final frame does not belong here. There is no count quota; include as many supported statements as needed, but do not pad or inventory incidental room background.\n\n\"motion\": differences you can directly SEE between the provided frames: things that moved, appeared, disappeared, or changed state, with direction when visible. Report only what is observably different across the frames, not guesses about change.\n\n\"inferred\": at most three short hypotheses about the ongoing activity, its phase, or the person's apparent immediate goal, each beginning \"The person appears to\". These are hypotheses, not observations; never state them as facts and never place them in the other lists.\n\nUse short atomic English statements. Missing is unknown, not false. Do not explain the JSON."
+}

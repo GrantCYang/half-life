@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying manuscript when using this project."
+type: software
+version: 0.2.1
+repository-code: "https://github.com/GrantCYang/half-life"
+date-released: 2026-11-25
+title: "HALF-LIFE: Forecasting When Visual Memories Stop Being True"
+authors:
+  - family-names: Yang
+    given-names: Yixuan
+license: MIT
+preferred-citation:
+  type: unpublished
+  title: "HALF-LIFE: Forecasting When Visual Memories Stop Being True"
+  authors:
+    - family-names: Yang
+      given-names: Yixuan
+  year: 2026

@@ -1,0 +1,14 @@
+{
+  "protocol": "caption_memory_half_v1",
+  "arms": [
+    "V0",
+    "V_B3",
+    "V_LoRA"
+  ],
+  "selection": "ceil(0.5 * inventory); descending probability; SHA256 tie seed 20260930",
+  "source_files": {
+    "caption_eval_protocol_full8_20260930.py": "1e4fc223ff55826af5c16895cc704e1e934ed8465d7ba5cd0840cd25bab8d932",
+    "prepare_caption_window_batch4_20261001.py": "2e02b6bcdb9cced9a0e62b76d52d6549cbe6fd6ec0a014f65616b16d319c3407"
+  },
+  "runtime_validation": "prompt and selection parity; no new GPU generation"
+}

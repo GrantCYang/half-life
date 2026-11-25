@@ -1,0 +1,232 @@
+\begin{thebibliography}{25}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Anwar et~al.(2025)Anwar, Welsh, Biswas, Pouya, and
+  Chang]{anwar2024remembr}
+Abrar Anwar, John Welsh, Joydeep Biswas, Soha Pouya, and Yan Chang.
+\newblock {ReMEmbR}: Building and reasoning over long-horizon spatio-temporal
+  memory for robot navigation.
+\newblock In \emph{2025 IEEE International Conference on Robotics and
+  Automation (ICRA)}, pp.\  2838--2845. IEEE, 2025.
+\newblock \doi{10.1109/ICRA55743.2025.11127706}.
+\newblock URL \url{https://doi.org/10.1109/ICRA55743.2025.11127706}.
+
+\bibitem[Brier(1950)]{brier1950verification}
+Glenn~W. Brier.
+\newblock Verification of forecasts expressed in terms of probability.
+\newblock \emph{Monthly Weather Review}, 78\penalty0 (1):\penalty0 1--3, 1950.
+\newblock \doi{10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2}.
+\newblock URL
+  \url{https://doi.org/10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2}.
+
+\bibitem[Chao et~al.(2026)Chao, Bai, Sheng, Li, and Sun]{chao2026stale}
+Hanxiang Chao, Yihan Bai, Rui Sheng, Tianle Li, and Yushi Sun.
+\newblock {STALE}: Can {LLM} agents know when their memories are no longer
+  valid?
+\newblock \emph{arXiv preprint arXiv:2605.06527}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2605.06527}.
+
+\bibitem[Chen et~al.(2024)Chen, Lv, Wu, Lin, Song, Gao, Liu, Gao,
+  et~al.]{chen2024videollmonline}
+Joya Chen, Zhaoyang Lv, Shiwei Wu, Kevin~Qinghong Lin, Chenan Song, Difei Gao,
+  Jia-Wei Liu, Ziteng Gao, et~al.
+\newblock {VideoLLM-online}: Online video large language model for streaming
+  video.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition (CVPR)}, pp.\  18407--18418, 2024.
+\newblock URL
+  \url{https://openaccess.thecvf.com/content/CVPR2024/html/Chen_VideoLLM-online_Online_Video_Large_Language_Model_for_Streaming_Video_CVPR_2024_paper}.
+
+\bibitem[Chen et~al.(2021)Chen, Wang, and Wang]{chen2021timesensitive}
+Wenhu Chen, Xinyi Wang, and William~Yang Wang.
+\newblock A dataset for answering time-sensitive questions.
+\newblock In \emph{Proceedings of the Neural Information Processing Systems
+  Track on Datasets and Benchmarks}, volume~1, 2021.
+\newblock URL
+  \url{https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/hash/1f0e3dad99908345f7439f8ffabdffc4-Abstract-round2.html}.
+
+\bibitem[Gneiting \& Raftery(2007)Gneiting and Raftery]{gneiting2007strictly}
+Tilmann Gneiting and Adrian~E. Raftery.
+\newblock Strictly proper scoring rules, prediction, and estimation.
+\newblock \emph{Journal of the American Statistical Association}, 102\penalty0
+  (477):\penalty0 359--378, 2007.
+\newblock \doi{10.1198/016214506000001437}.
+\newblock URL \url{https://doi.org/10.1198/016214506000001437}.
+
+\bibitem[Grauman et~al.(2022)Grauman, Westbury, Byrne, Chavis, Furnari,
+  Girdhar, Hamburger, Jiang, et~al.]{grauman2022ego4d}
+Kristen Grauman, Andrew Westbury, Eugene Byrne, Zachary Chavis, Antonino
+  Furnari, Rohit Girdhar, Jackson Hamburger, Hao Jiang, et~al.
+\newblock {Ego4D}: Around the world in 3,000 hours of egocentric video.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition (CVPR)}, pp.\  18995--19012, 2022.
+\newblock URL
+  \url{https://openaccess.thecvf.com/content/CVPR2022/html/Grauman_Ego4D_Around_the_World_in_3000_Hours_of_Egocentric_Video_CVPR_2022_paper.html}.
+
+\bibitem[Grauman et~al.(2024)Grauman, Westbury, Torresani, Kitani, Malik,
+  Afouras, Ashutosh, Baiyya, et~al.]{grauman2024egoexo4d}
+Kristen Grauman, Andrew Westbury, Lorenzo Torresani, Kris Kitani, Jitendra
+  Malik, Triantafyllos Afouras, Kumar Ashutosh, Vijay Baiyya, et~al.
+\newblock {Ego-Exo4D}: Understanding skilled human activity from first- and
+  third-person perspectives.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition (CVPR)}, pp.\  19383--19400, 2024.
+\newblock URL
+  \url{https://openaccess.thecvf.com/content/CVPR2024/html/Grauman_Ego-Exo4D_Understanding_Skilled_Human_Activity_from_First-_and_Third-Person_Perspectives_CVPR_2024_paper.html}.
+
+\bibitem[Guo et~al.(2017)Guo, Pleiss, Sun, and Weinberger]{guo2017calibration}
+Chuan Guo, Geoff Pleiss, Yu~Sun, and Kilian~Q. Weinberger.
+\newblock On calibration of modern neural networks.
+\newblock In \emph{Proceedings of the 34th International Conference on Machine
+  Learning}, volume~70 of \emph{Proceedings of Machine Learning Research}, pp.\
+   1321--1330. PMLR, 2017.
+\newblock URL \url{https://proceedings.mlr.press/v70/guo17a.html}.
+
+\bibitem[He et~al.(2024)He, Li, Jang, Jia, Cao, Shah, Shrivastava, and
+  Lim]{he2024malmm}
+Bo~He, Hengduo Li, Young~Kyun Jang, Menglin Jia, Xuefei Cao, Ashish Shah,
+  Abhinav Shrivastava, and Ser-Nam Lim.
+\newblock {MA-LMM}: Memory-augmented large multimodal model for long-term video
+  understanding.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition (CVPR)}, pp.\  13504--13514, 2024.
+\newblock URL
+  \url{https://openaccess.thecvf.com/content/CVPR2024/html/He_MA-LMM_Memory-Augmented_Large_Multimodal_Model_for_Long-Term_Video_Understanding_CVPR_2024_paper.html}.
+
+\bibitem[Hu et~al.(2022)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and
+  Chen]{hu2022lora}
+Edward~J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
+  Wang, Lu~Wang, and Weizhu Chen.
+\newblock {LoRA}: Low-rank adaptation of large language models.
+\newblock In \emph{International Conference on Learning Representations}, 2022.
+\newblock URL \url{https://openreview.net/forum?id=nZeVKeeFYf9}.
+
+\bibitem[Kadavath et~al.(2022)Kadavath, Conerly, Askell, Henighan, Drain,
+  Perez, Schiefer, Hatfield-Dodds, et~al.]{kadavath2022language}
+Saurav Kadavath, Tom Conerly, Amanda Askell, Tom Henighan, Dawn Drain, Ethan
+  Perez, Nicholas Schiefer, Zac Hatfield-Dodds, et~al.
+\newblock Language models (mostly) know what they know.
+\newblock \emph{arXiv preprint arXiv:2207.05221}, 2022.
+\newblock URL \url{https://arxiv.org/abs/2207.05221}.
+
+\bibitem[Murphy(1973)]{murphy1973new}
+Allan~H. Murphy.
+\newblock A new vector partition of the probability score.
+\newblock \emph{Journal of Applied Meteorology}, 12\penalty0 (4):\penalty0
+  595--600, 1973.
+\newblock \doi{10.1175/1520-0450(1973)012<0595:ANVPOT>2.0.CO;2}.
+\newblock URL
+  \url{https://doi.org/10.1175/1520-0450(1973)012<0595:ANVPOT>2.0.CO;2}.
+
+\bibitem[Packer et~al.(2023)Packer, Wooders, Lin, Fang, Patil, Stoica, and
+  Gonzalez]{packer2023memgpt}
+Charles Packer, Sarah Wooders, Kevin Lin, Vivian Fang, Shishir~G. Patil, Ion
+  Stoica, and Joseph~E. Gonzalez.
+\newblock {MemGPT}: Towards {LLM}s as operating systems.
+\newblock \emph{arXiv preprint arXiv:2310.08560}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2310.08560}.
+
+\bibitem[{Qwen Team}(2026)]{qwen2026qwen38}
+{Qwen Team}.
+\newblock {Qwen3.8-27B}.
+\newblock \url{https://huggingface.co/Qwen/Qwen3.8-27B}, 2026.
+\newblock URL \url{https://huggingface.co/Qwen/Qwen3.8-27B}.
+\newblock Hugging Face model repository, revision
+  1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0. Accessed October 2026.
+
+\bibitem[Reimers \& Gurevych(2019)Reimers and Gurevych]{reimers2019sentence}
+Nils Reimers and Iryna Gurevych.
+\newblock Sentence-{BERT}: Sentence embeddings using {S}iamese {BERT}-networks.
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing and the 9th International Joint Conference on
+  Natural Language Processing ({EMNLP-IJCNLP})}, pp.\  3982--3992, Hong Kong,
+  China, 2019. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/D19-1410}.
+\newblock URL \url{https://aclanthology.org/D19-1410/}.
+
+\bibitem[Song et~al.(2024)Song, Chai, Wang, Zhang, Zhou, Wu, Chi, Guo,
+  et~al.]{song2024moviechat}
+Enxin Song, Wenhao Chai, Guanhong Wang, Yucheng Zhang, Haoyang Zhou, Feiyang
+  Wu, Haozhe Chi, Xun Guo, et~al.
+\newblock {MovieChat}: From dense token to sparse memory for long video
+  understanding.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition (CVPR)}, pp.\  18221--18232, 2024.
+\newblock URL
+  \url{https://openaccess.thecvf.com/content/CVPR2024/html/Song_MovieChat_From_Dense_Token_to_Sparse_Memory_for_Long_Video_CVPR_2024_paper.html}.
+
+\bibitem[Sun \& Zhang(2026)Sun and Zhang]{sun2026memorylies}
+Yushi Sun and Yanjie Zhang.
+\newblock When memory lies: An empirical study of spatial memory staleness in
+  {VLM} agents.
+\newblock \emph{arXiv preprint arXiv:2608.04574}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2608.04574}.
+
+\bibitem[Wang et~al.(2020)Wang, Wei, Dong, Bao, Yang, and Zhou]{wang2020minilm}
+Wenhui Wang, Furu Wei, Li~Dong, Hangbo Bao, Nan Yang, and Ming Zhou.
+\newblock {MiniLM}: Deep self-attention distillation for task-agnostic
+  compression of pre-trained transformers.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, pp.\  5776--5788, 2020.
+\newblock URL
+  \url{https://papers.nips.cc/paper/2020/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html}.
+
+\bibitem[Wang et~al.(2026)Wang, Gong, Cao, Zhu, Wang, He, and
+  Li]{wang2026oldisnotfalse}
+Ziming Wang, Chuyue Gong, Hongliang Cao, Jingmin Zhu, Chutian Wang, Yuheng He,
+  and Xiuyu Li.
+\newblock Old is not false: Valid-time memory for interactive video world
+  models.
+\newblock \emph{arXiv preprint arXiv:2611.00758}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2611.00758}.
+
+\bibitem[Wu et~al.(2025)Wu, Wang, Yu, Zhang, Chang, and Yu]{wu2025longmemeval}
+Di~Wu, Hongwei Wang, Wenhao Yu, Yuwei Zhang, Kai-Wei Chang, and Dong Yu.
+\newblock {LongMemEval}: Benchmarking chat assistants on long-term interactive
+  memory.
+\newblock In \emph{International Conference on Learning Representations}, 2025.
+\newblock URL \url{https://openreview.net/forum?id=pZiyCaVuti}.
+
+\bibitem[Zadrozny \& Elkan(2002)Zadrozny and Elkan]{zadrozny2002transforming}
+Bianca Zadrozny and Charles Elkan.
+\newblock Transforming classifier scores into accurate multiclass probability
+  estimates.
+\newblock In \emph{Proceedings of the Eighth ACM SIGKDD International
+  Conference on Knowledge Discovery and Data Mining (KDD)}, pp.\  694--699, New
+  York, NY, USA, 2002. ACM.
+\newblock \doi{10.1145/775047.775151}.
+\newblock URL \url{https://doi.org/10.1145/775047.775151}.
+
+\bibitem[Zhang \& Choi(2023)Zhang and Choi]{zhang2023mitigating}
+Michael J.~Q. Zhang and Eunsol Choi.
+\newblock Mitigating temporal misalignment by discarding outdated facts.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, pp.\  14213--14226, Singapore, 2023.
+  Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2023.emnlp-main.879}.
+\newblock URL \url{https://aclanthology.org/2023.emnlp-main.879/}.
+
+\bibitem[Zhong et~al.(2024)Zhong, Guo, Gao, Ye, and Wang]{zhong2024memorybank}
+Wanjun Zhong, Lianghong Guo, Qiqi Gao, He~Ye, and Yanlin Wang.
+\newblock {MemoryBank}: Enhancing large language models with long-term memory.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~38, pp.\  19724--19731, 2024.
+\newblock \doi{10.1609/aaai.v38i17.29946}.
+\newblock URL \url{https://ojs.aaai.org/index.php/AAAI/article/view/29946}.
+
+\bibitem[Zhou et~al.(2019)Zhou, Khashabi, Ning, and Roth]{zhou2019going}
+Ben Zhou, Daniel Khashabi, Qiang Ning, and Dan Roth.
+\newblock ``{G}oing on a vacation'' takes longer than ``{G}oing for a walk'': A
+  study of temporal commonsense understanding.
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing and the 9th International Joint Conference on
+  Natural Language Processing ({EMNLP-IJCNLP})}, pp.\  3363--3369, Hong Kong,
+  China, 2019. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/D19-1332}.
+\newblock URL \url{https://aclanthology.org/D19-1332/}.
+
+\end{thebibliography}

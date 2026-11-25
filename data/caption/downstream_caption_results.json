@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-09",
+  "origin": "Completed historical experiments; aggregate-only export, no new inference.",
+  "metric": {
+    "name": "capture-group macro signed preference",
+    "range": [
+      -1,
+      1
+    ],
+    "positive_direction": "Preference for the first candidate in comparison.",
+    "order_handling": "Average canonical AB/BA judgments; orders are not independent votes.",
+    "interpretation": "Not an accuracy increase or a relative Brier reduction."
+  },
+  "memory_variants": {
+    "V0": "No past memory.",
+    "V_B3": "Top ceil(inventory_size * 0.5) facts by saved B3 validity score.",
+    "V_LoRA": "The same number of facts by saved LoRA validity score; no caption-generator retraining."
+  },
+  "automatic_visual_evaluation": {
+    "date": "2026-10-02",
+    "state": "COMPLETE",
+    "evaluation_complete": true,
+    "expected_judgments": 4752,
+    "completed_judgments": 4752,
+    "reused_captions": 1782,
+    "capture_groups": 24,
+    "bootstrap_replicates": 2000,
+    "estimator": "Average canonical AB/BA within each case, then equally weight capture groups. Contrasts use identical complete cases and paired group bootstrap. Orders are not independent votes.",
+    "cells": [
+      {
+        "caption_set": "old",
+        "judge_rubric": "multidim",
+        "comparison": [
+          "V_LoRA",
+          "V_B3"
+        ],
+        "group_mean": 0.04855931152902455,
+        "ci95": [
+          -0.1284353006790023,
+          0.21492336668967105
+        ],
+        "complete_endpoints": 297,
+        "groups": 24,
+        "endpoint_pair_outcomes": {
+          "comparator_win": 76,
+          "lora_win": 101,
+          "order_inconsistent": 91,
+          "tie": 29
+        }
+      },
+      {
+        "caption_set": "old",
+        "judge_rubric": "simple",
+        "comparison": [
+          "V_LoRA",
+          "V_B3"
+        ],
+        "group_mean": -0.0009968740206109563,
+        "ci95": [
+          -0.13215838333978577,
+          0.13289517195767195
+        ],
+        "complete_endpoints": 297,
+        "groups": 24,
+        "endpoint_pair_outcomes": {
+          "comparator_win": 54,
+          "lora_win": 66,
+          "order_inconsistent": 127,
+          "tie": 50
+        }
+      },
+      {
+        "caption_set": "new_short",
+        "judge_rubric": "multidim",
+        "comparison": [
+          "V_LoRA",
+          "V_B3"
+        ],
+        "group_mean": 0.05677145459741697,
+        "ci95": [
+          -0.11962719298245615,
+          0.23121133924692894
+        ],
+        "complete_endpoints": 297,
+        "groups": 24,
+        "endpoint_pair_outcomes": {
+          "comparator_win": 79,
+          "lora_win": 104,
+          "order_inconsistent": 96,
+          "tie": 18
+        }
+      },
+      {
+        "caption_set": "new_short",
+        "judge_rubric": "simple",
+        "comparison": [
+          "V_LoRA",
+          "V_B3"
+        ],
+        "group_mean": 0.004803859467034753,
+        "ci95": [
+          -0.13156648728277628,
+          0.13225184617669508
+        ],
+        "complete_endpoints": 297,
+        "groups": 24,
+        "endpoint_pair_outcomes": {
+          "comparator_win": 62,
+          "lora_win": 67,
+          "order_inconsistent": 135,
+          "tie": 33
+        }
+      },
+      {
+        "caption_set": "old",
+        "judge_rubric": "multidim",
+        "comparison": [
+          "V_LoRA",
+          "V0"
+        ],
+        "group_mean": 0.22207920762566838,
+        "ci95": [
+          0.10163730803974706,
+          0.35311098171152516
+        ],
+        "complete_endpoints": 297,
+        "groups": 24,
+        "endpoint_pair_outcomes": {
+          "comparator_win": 55,
+          "lora_win": 130,
+          "order_inconsistent": 111,
+          "tie": 1
+        }
+      },
+      {
+        "caption_set": "old",
+        "judge_rubric": "simple",
+        "comparison": [
+          "V_LoRA",
+          "V0"
+        ],
+        "group_mean": 0.17802206850520652,
+        "ci95": [
+          0.06746869987832531,
+          0.2846476353986305
+        ],
+        "complete_endpoints": 297,
+        "groups": 24,
+        "endpoint_pair_outcomes": {
+          "comparator_win": 48,
+          "lora_win": 113,
+          "order_inconsistent": 128,
+          "tie": 8
+        }
+      },
+      {
+        "caption_set": "new_short",
+        "judge_rubric": "multidim",
+        "comparison": [
+          "V_LoRA",
+          "V0"
+        ],
+        "group_mean": 0.1668889331373933,
+        "ci95": [
+          0.025394929766850094,
+          0.3100004321229524
+        ],
+        "complete_endpoints": 297,
+        "groups": 24,
+        "endpoint_pair_outcomes": {
+          "comparator_win": 58,
+          "lora_win": 133,
+          "order_inconsistent": 105,
+          "tie": 1
+        }
+      },
+      {
+        "caption_set": "new_short",
+        "judge_rubric": "simple",
+        "comparison": [
+          "V_LoRA",
+          "V0"
+        ],
+        "group_mean": 0.17475852331872452,
+        "ci95": [
+          0.06867739245456637,
+          0.27945883085083983
+        ],
+        "complete_endpoints": 297,
+        "groups": 24,
+        "endpoint_pair_outcomes": {
+          "comparator_win": 49,
+          "lora_win": 110,
+          "order_inconsistent": 132,
+          "tie": 6
+        }
+      }
+    ]
+  },
+  "human_reference_assisted_evaluation": {
+    "date": "2026-10-04",
+    "state": "COMPLETE_WITH_MISSING_FIELDS",
+    "evaluation_complete": true,
+    "expected_judgments": 3744,
+    "completed_judgments": 3744,
+    "reused_captions": 528,
+    "status_counts": {
+      "invalid": 4,
+      "ok": 3722,
+      "partial": 18
+    },
+    "primary_scope": "past_or_current",
+    "primary_caption_set": "new_short",
+    "bootstrap_replicates": 2000,
+    "estimator": "Canonical AB/BA average; equal references within annotator, equal annotators within endpoint, equal endpoints within capture group, equal capture groups. 2000 group bootstrap. Complete endpoint estimates retain all selected refs for that endpoint.",
+    "cells": [
+      {
+        "comparison": [
+          "V_LoRA",
+          "V_B3"
+        ],
+        "group_mean": 0.06184012066365008,
+        "ci95": [
+          -0.1267156862745098,
+          0.2403469079939668
+        ],
+        "expected_references": 102,
+        "expected_endpoints": 61,
+        "complete_endpoints": 61,
+        "groups": 17,
+        "reference_pair_outcomes": {
+          "blocked_pairs": 0,
+          "candidate_1_win": 18,
+          "candidate_2_win": 10,
+          "order_inconsistent": 60,
+          "tie": 14
+        }
+      },
+      {
+        "comparison": [
+          "V_LoRA",
+          "V0"
+        ],
+        "group_mean": -0.14411764705882352,
+        "ci95": [
+          -0.3526960784313726,
+          0.08088235294117647
+        ],
+        "expected_references": 102,
+        "expected_endpoints": 61,
+        "complete_endpoints": 60,
+        "groups": 17,
+        "reference_pair_outcomes": {
+          "blocked_pairs": 0,
+          "candidate_1_win": 14,
+          "candidate_2_win": 21,
+          "missing_pairs": 1,
+          "order_inconsistent": 64,
+          "tie": 2
+        }
+      },
+      {
+        "comparison": [
+          "V_B3",
+          "V0"
+        ],
+        "group_mean": -0.024609375,
+        "ci95": [
+          -0.23333333333333334,
+          0.1796875
+        ],
+        "expected_references": 102,
+        "expected_endpoints": 61,
+        "complete_endpoints": 58,
+        "groups": 16,
+        "reference_pair_outcomes": {
+          "blocked_pairs": 0,
+          "candidate_1_win": 18,
+          "candidate_2_win": 18,
+          "missing_pairs": 4,
+          "order_inconsistent": 59,
+          "tie": 3
+        }
+      }
+    ]
+  },
+  "interpretation": {
+    "automatic_memory_vs_none": "All four LoRA-versus-V0 intervals are above zero under automatic visual evaluation.",
+    "incremental_vs_B3": "Three of four visual point estimates and the primary human-reference-assisted estimate are positive; all corresponding intervals include zero.",
+    "reference_memory_vs_none": "The primary reference-assisted no-memory comparisons do not establish a benefit.",
+    "uncertainty": "Directional evidence remains open. Shared endpoints and captions do not constitute independent replications.",
+    "release_scope": "Aggregate results only. Individual judgments needed for statistical recomputation are not included."
+  }
+}
